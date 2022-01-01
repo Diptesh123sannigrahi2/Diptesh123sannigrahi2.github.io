@@ -16,19 +16,15 @@ if (mysqli_connect_errno()) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Login Form</title>
-	<link rel="stylesheet" a href="css\style.css">
-	<link rel="stylesheet" a href="css\font-awesome.min.css">
+	<title>Login Form</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,500;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
-    body{
-	margin: 0 auto;
-	background-image: url("/DipteshStore/images/tech1.jpg");
-	background-repeat: no-repeat;
-	background-size: 100% 720px;
-}
-
-.container{
+.container1{
 	width: 500px;
 	height: 450px;
 	text-align: center;
@@ -37,7 +33,7 @@ if (mysqli_connect_errno()) {
 	margin-top: 160px;
 }
 
-.container img{
+.container1 img{
 	width: 150px;
 	height: 150px;
 	margin-top: -60px;
@@ -75,7 +71,21 @@ input[type="email"],input[type="password"]{
 }
 </style>
 <body>
+<div class="header">
 	<div class="container">
+		<div class="navbar">
+			<div class="logo">
+				<img src="images/logo.png" width="220px">
+			</div>
+			<nav>
+				<ul>
+					<li><a href="">About</a></li>
+					<li><a href="">Contact</a></li>
+					<li><a href="">Help</a></li>
+				</ul>
+			</nav>
+		</div>
+	<div class="container1">
 	<img src="images/user1.jpg"/>
 		<form action="" method="POST">
 			<div class="form-input">
@@ -110,6 +120,5 @@ input[type="email"],input[type="password"]{
             }
         ?>
 	</div>
-    Click here to clean <a href = "logout.php" tite = "Logout">Session.
 </body>
 </html>

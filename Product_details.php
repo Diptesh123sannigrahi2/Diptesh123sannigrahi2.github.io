@@ -27,6 +27,39 @@ echo $Prodct_id;
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,500;1,900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style>
+.container1{
+	width: 30px;
+	height: 40px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: rgba(44, 62, 80,0.7);
+	margin-top: 5px;
+}
+
+input[type="number"]{
+	margin-top: 0;
+	height: 40px;
+	width: 100px;
+	font-size: 10px;
+	margin-bottom: 10px;
+	background-color: #fff;
+	padding-left: 10px;
+}
+    .btn-cart{
+    position: relative;
+	padding: 8px 16px;
+	border: none;
+	background-color: #0000ad;
+	color: #9cccfb;
+}
+.btn-login{
+	padding: 8px 16px;
+	border: none;
+	background-color: #27ae60;
+	color: #fff;
+}
+</style>
 <body>
 <div class="header">
 	<div class="container">
@@ -76,6 +109,16 @@ echo $Prodct_id;
             }
 ?>
     </div>
+    <div class="container1">
+        <form action="" method="POST">
+            <div class="form-input">
+				<input type="number" name="count" placeholder="Enter Quantity"/>	
+			</div>
+            <input type="submit" name="cart" value="Add to Cart" class="btn-cart"/> 
+        </form>
+    </div>    
+    <br>
+    <br>
     <br>
         <form action="" method="POST">
 			<div class="form-input">
@@ -87,9 +130,12 @@ echo $Prodct_id;
 			<input type="submit" name="submit" value="SEND" class="btn-login"/>
 		</form>
     <br>
+    <br>
+    <br>
+    <br>
     <h2 style="color:red;">All Comments: </h2>
     <?php
-        $van = "SELECT * FROM `comment` WHERE `Prodct_id`='A12'";
+        $van = "SELECT * FROM `comment` WHERE `Prodct_id`='$Prodct_id'";
            $query=mysqli_query($con,$van);
            $nums=mysqli_num_rows($query);
            while($data= mysqli_fetch_array($query)){
@@ -114,6 +160,24 @@ echo $Prodct_id;
                 }
                 else{
                     echo "ERROR: $vsql <br> $con->error";
+                }
+
+                $con->close();
+                
+            }
+        ?>
+            <?php
+            if(isset($_POST['cart'])){
+                
+                $count=$_POST['count'];
+
+                $nsql="INSERT INTO `cartnew`(`id`, `Prodct_id`,`name`, `price`, `count`) VALUES ('','$Prodct_id','','','$count')";
+                
+                if($con->query($nsql) == true){
+                    echo "Successfully Added to Cart";
+                }
+                else{
+                    echo "ERROR: $nsql <br> $con->error";
                 }
 
                 $con->close();
